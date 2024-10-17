@@ -1,5 +1,27 @@
 "use strict";
+let userInfo = {
+    name: "Danylo",
+    age: 22,
+    hobbies: 3,
+    ageUp: function (age) {
+        this.age += age;
+        return this
+    },
+    ageDown: function (age) {
+        this.age -= age;
+        return this
+    },
+    ageActual: function () {
+        console.log(this.age)
+        return this
+    }
+}
 
+const result = userInfo.ageUp(1).ageDown(6).ageActual();
+console.log(result)
+
+
+/*
 function getSum(sum) {
     let number = sum;
     return function getInnerResult(result) {
@@ -65,10 +87,6 @@ getUserResult();
 
 
 
-
-
-
-
 const array = [2, 5, 22, 11, 66, 33];
 
 function addToArray(array, number) {
@@ -82,4 +100,4 @@ function addToArray(array, number) {
 
 const resultOfArray = addToArray(array, 42);
 console.log(resultOfArray);
-
+*/
