@@ -18,8 +18,102 @@ let userInfo = {
 }
 
 const result = userInfo.ageUp(1).ageDown(6).ageActual();
-console.log(result)
+console.log(result);
 
+
+function Calculator(initialValue = +prompt('Please enter a number', '6')) {
+    this.value = initialValue;
+    this.hasError = this.value < 0;
+    this.errorMessage = 'Error!';
+
+    this.getSumOfNumbers = (funcValue = this.value) => {
+        const hasInsideError = funcValue < 0;
+        if (this.hasError || hasInsideError) return `getSumOfNumber: ${this.errorMessage}`;
+
+        return funcValue === 1 ? 1 : funcValue + this.getSumOfNumbers(funcValue - 1);
+    }
+
+    this.getFactorial = (funcValue = this.value) => {
+        const hasInsideError = funcValue < 0;
+        if (this.hasError || hasInsideError) return `getFactorial: ${this.errorMessage}`;
+
+        return funcValue === 1 ? 1 : funcValue * this.getFactorial(funcValue - 1);
+    }
+
+    this.getExponential = (value, stepValue = +prompt('Please enter step')) => {
+        if (this.hasError) return `getExponential: ${this.errorMessage}`;
+
+        switch (stepValue) {
+            case 0:
+                return 1;
+            case 1:
+                return value;
+            default:
+                return value * this.getExponential(value, stepValue - 1);
+        }
+    }
+
+    this.getFibonachi = (value = this.value) => {
+        if (this.hasError) return `getFibonachi: ${this.errorMessage}`;
+
+        console.log('Value:', value)
+
+        switch (value) {
+            case 0:
+                return 0;
+            case 1:
+                return 1;
+            default:
+                return this.getFibonachi(value - 1) + this.getFibonachi(value - 2);
+        }
+    }
+
+}
+
+const calculator = new Calculator(9);
+console.log(calculator.getFibonachi(3));
+
+
+let company = {
+    sales: [
+        {name: 'John', salary: 1000},
+        {name: 'Alice', salary: 600},
+
+    ],
+
+    development: {
+        web: [
+            {name: 'Peter', salary: 2000},
+            {name: 'Alex', salary: 1800}
+        ],
+
+        internals: [
+            {name: 'Jack', salary: 1300}
+        ]
+    }
+};
+
+function getSumOfWages() {
+
+    let sumOfWages = 0;
+
+    for (let key in company) {
+        if (Array.isArray(company[key])) {
+            const method = company[key].reduce(function (previousValue, item) {
+                return previousValue + item.salary;
+            }, 0)
+        } else if (typeof company[key] === "object") {
+            for (let innerKey in company[key]) {
+                sumOfWages += company[key][innerKey].reduce((sum, item) => sum + item.salary, 0);
+            }
+        }
+    }
+    return sumOfWages;
+}
+
+
+const result10 = getSumOfWages();
+console.log(result10);
 
 /*
 function getSum(sum) {
