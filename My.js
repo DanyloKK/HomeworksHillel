@@ -1,4 +1,46 @@
 "use strict";
+
+let company = {
+    sales: [
+        {name: 'John', salary: 1000},
+        {name: 'Alice', salary: 600},
+
+    ],
+
+    development: {
+        web: [
+            {name: 'Peter', salary: 2000},
+            {name: 'Alex', salary: 1800}
+        ],
+
+        internals: [
+            {name: 'Jack', salary: 1300}
+        ]
+    }
+};
+
+function getSumOfWages() {
+
+    let sumOfWages = 0;
+
+    for (let key in company) {
+        if (Array.isArray(company[key])) {
+            const method = company[key].reduce(function (previousValue, item) {
+                return previousValue + item.salary;
+            }, 0)
+        } else {
+            for (let innerKey in company[key]) {
+                sumOfWages += company[key][innerKey].reduce((sum, item) => sum + item.salary, 0);
+            }
+        }
+    }
+    return sumOfWages;
+}
+
+
+const result10 = getSumOfWages();
+console.log(result10);
+/*
 let userInfo = {
     name: "Danylo",
     age: 22,
@@ -102,7 +144,7 @@ function getSumOfWages() {
             const method = company[key].reduce(function (previousValue, item) {
                 return previousValue + item.salary;
             }, 0)
-        } else if (typeof company[key] === "object") {
+        } else {
             for (let innerKey in company[key]) {
                 sumOfWages += company[key][innerKey].reduce((sum, item) => sum + item.salary, 0);
             }
