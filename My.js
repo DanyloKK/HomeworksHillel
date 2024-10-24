@@ -9,10 +9,12 @@ const user = {
     email: "oleksandr@example.com",
     hobbies: ["читання", "подорожі", "спорт"],
     isMarried: false,
+    getInfo() {
+        return `Name: ${this.name}, Age: ${this.age}, City: ${this.location.city}, Country: ${this.location.country}, Email: ${this.email}, Hobbies: ${this.hobbies.join(", ")}, Married: ${this.isMarried ? "yes" : "no"}`;
+    }
 }
-for (let key in user) {
-    console.log(`${key}: ${user[key]}`);
-}
+console.log(user.getInfo());
+
 
 const array = [43, 12, 78, 56, 22, 91, 15, 87, 3, 64];
 const newArray = array.filter(function (item) {
@@ -41,7 +43,6 @@ const contactsBook = {
         }
     ]
 };
-
 
 
 function findContact(name) {
