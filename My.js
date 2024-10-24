@@ -1,5 +1,82 @@
 "use strict";
+const user = {
+    name: "Олександр",
+    age: 30,
+    location: {
+        city: "Київ",
+        country: "Україна"
+    },
+    email: "oleksandr@example.com",
+    hobbies: ["читання", "подорожі", "спорт"],
+    isMarried: false,
+}
+for (let key in user) {
+    console.log(`${key}: ${user[key]}`);
+}
 
+const array = [43, 12, 78, 56, 22, 91, 15, 87, 3, 64];
+const newArray = array.filter(function (item) {
+    if (item % 2 === 0) {
+        return item
+    }
+})
+console.log(newArray);
+
+const contactsBook = {
+    contacts: [
+        {
+            name: "John Smith",
+            phoneNumber: "+1234567890",
+            email: "john.smith@example.com"
+        },
+        {
+            name: "Emily Johnson",
+            phoneNumber: "+0987654321",
+            email: "emily.johnson@example.com"
+        },
+        {
+            name: "Michael Williams",
+            phoneNumber: "+1122334455",
+            email: "michael.williams@example.com"
+        }
+    ]
+};
+
+
+
+function findContact(name) {
+    const findUser = contactsBook.contacts.find(item => item.name === name);
+
+    if (findUser) {
+        return findUser; // Повертає знайдений контакт
+    } else {
+        console.log("User not found"); // Виводить повідомлення, якщо контакт не знайдено
+        return null
+    }
+
+
+}
+
+const result = findContact("John Smith2");
+console.log(result);
+
+function addContact(name, phoneNumber, email) {
+    const newContact = {
+        name: name,
+        phoneNumber: phoneNumber,
+        email: email,
+    }
+    contactsBook.contacts.push(newContact);
+    return contactsBook.contacts;
+
+
+}
+
+const newContacts = addContact("Danylo", "+242442", "domik12560@gmail.com");
+console.log(newContacts);
+
+
+/*
 let company = {
     sales: [
         {name: 'John', salary: 1000},
