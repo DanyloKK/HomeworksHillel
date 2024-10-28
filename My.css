@@ -1,0 +1,42 @@
+table {
+    border-collapse: collapse;
+}
+
+td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+    width: 50px;
+}
+p{
+    position: absolute;
+    top:70%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-weight: 600;
+    font-size: 35px;
+    color: black;
+}
+
+.push{
+    position: absolute;
+    top:70%;
+    left: 50%;
+    color: white;
+    background-color: blue;
+    transform: translate(-50%,-50%);
+    padding: 12px 20px;
+
+}
+.push:hover{
+    color: black;
+    background: rebeccapurple;
+}
+
+.addColor{
+    color: green;
+}
+#itemList {
+    list-style-type: none;
+    padding: 0;
+}

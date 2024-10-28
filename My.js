@@ -1,4 +1,37 @@
 "use strict";
+let multiply = 1;
+const getBody = document.querySelector(`body`)
+const table = document.createElement(`table`)
+getBody.appendChild(table);
+table.classList.add(`table`)
+
+for (let i = 1; i < 11; i++) {
+    const createElement = document.createElement(`tr`)
+    table.appendChild(createElement);
+    for (let j = 1; j < 11; j++) {
+        multiply = i * j;
+        const createEl = document.createElement(`td`)
+        createElement.appendChild(createEl);
+        createEl.textContent = multiply;
+        createEl.classList.add(`td`)
+        console.log(multiply);
+    }
+}
+
+const getButton = document.querySelector(`.push`);
+const findElement = document.querySelector(`p`);
+getButton.addEventListener(`click`, function (event) {
+    findElement.classList.toggle(`addColor`);
+})
+
+const arrayOfImages = ["First.jpg", "Second.jpg", "Third.jpg"];
+const getRandom = Math.floor(Math.random() * arrayOfImages.length);
+const getImage = arrayOfImages[getRandom];
+
+const createElement = document.createElement(`img`)
+createElement.setAttribute(`src`, `images/${getImage}`)
+getBody.appendChild(createElement);
+/*
 const user = {
     name: "Олександр",
     age: 30,
@@ -76,7 +109,7 @@ function addContact(name, phoneNumber, email) {
 const newContacts = addContact("Danylo", "+242442", "domik12560@gmail.com");
 console.log(newContacts);
 
-
+*/
 /*
 let company = {
     sales: [
