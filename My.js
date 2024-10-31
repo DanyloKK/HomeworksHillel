@@ -1,4 +1,51 @@
 "use strict";
+
+const getButton = document.querySelector(`.address`);
+let link = ""
+getButton.addEventListener(`click`, () => {
+    link = +prompt(`Insert link`);
+})
+
+document.querySelector(`.addressTo`).addEventListener(`click`, () => {
+    if (link) {
+        window.location.href = link;
+    }
+});
+
+
+const findContainer = document.querySelector(`.Container`);
+const findButton = document.querySelectorAll(`.Container button`)
+findContainer.addEventListener(`click`, function (event) {
+    const target = event.target;
+    if (target.tagName === "BUTTON") {
+        const buttonText = `You clicked on button:${target.textContent}`
+        alert(buttonText);
+    }
+});
+
+
+const findList = document.querySelector(`.Main__List`);
+const findMenu = document.querySelector(`.Main`);
+const findInput = document.querySelector(`.Input__Field`);
+const findAddButton = document.querySelector(`.Add__Button`)
+findAddButton.addEventListener(`click`, function (event) {
+    let inputValue = findInput.value;
+    if (inputValue) {
+        const createEl = document.createElement(`li`);
+        createEl.textContent = inputValue;
+        findList.appendChild(createEl);
+        findInput.value = "";
+        const createBut = document.createElement(`button`)
+        createBut.textContent = "Delete"
+        createEl.appendChild(createBut);
+        createBut.addEventListener("click",function (event){
+            findList.removeChild(createEl);
+        })
+    }
+})
+
+
+/*
 let multiply = 1;
 const getBody = document.querySelector(`body`)
 const table = document.createElement(`table`)
