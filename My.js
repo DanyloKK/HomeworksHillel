@@ -1,5 +1,50 @@
 "use strict";
+const findForm = document.getElementById(`contactForm`);
+const findInputName = findForm.elements.name;
+const findTextMessage = findForm.elements.message;
+const findPhoneInput = findForm.elements.phone;
+const findEmailInput = findForm.elements.email;
 
+const regExp = /^\w{5,}$/;
+const phoneRegExp = /^\+380\d{9}$/;
+const emailRegExp = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-z]{2,}$/;
+
+findForm.addEventListener(`submit`, function (event) {
+    event.preventDefault();
+    const nameValue = findInputName.value
+    if (nameValue.trim() === "") {
+        alert(`Введите ваше имя!`);
+        return; // Прерываем выполнение функции, если имя не введено
+    } else {
+        console.log(`Ваше имя: ${findInputName.value}`);
+    }
+
+    const messageRegular = findTextMessage.value;
+    const phoneRegular = findPhoneInput.value;
+    const emailRegular = findEmailInput.value;
+
+    if (regExp.test(messageRegular)) {
+        console.log(`Your message:${messageRegular}`)
+    } else {
+        alert(`Message is less that 5 symbols`);
+        return;
+    }
+    if (phoneRegExp.test(phoneRegular)) {
+        console.log(`Your phone:${phoneRegular}`)
+    } else {
+        alert(`Phone is invalid, he must start with +380XXXXXXX`);
+        return;
+    }
+    if (emailRegExp.test(emailRegular)) {
+        console.log(`Your email:${emailRegular}`)
+    } else {
+        alert(`Email is invalid`);
+    }
+
+});
+
+
+/*
 const getButton = document.querySelector(`.address`);
 let link = ""
 getButton.addEventListener(`click`, () => {
@@ -22,6 +67,16 @@ findContainer.addEventListener(`click`, function (event) {
         alert(buttonText);
     }
 });
+
+const url = "https://www.example.com/page?param1=value1&param2=value2";
+
+// Отримання параметрів запиту
+const searchParams = new URLSearchParams(window.location.search);
+const param1 = searchParams.get("param1");
+const param2 = searchParams.get("param2");
+
+console.log("param1:", param1);
+console.log("param2:", param2);
 
 
 const findList = document.querySelector(`.Main__List`);
@@ -395,3 +450,4 @@ function addToArray(array, number) {
 const resultOfArray = addToArray(array, 42);
 console.log(resultOfArray);
 */
+
