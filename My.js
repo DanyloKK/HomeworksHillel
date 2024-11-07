@@ -13,15 +13,15 @@ function hideArrow() {
    const lastSlide = document.querySelector(`.carousel__slide:last-of-type`);
    const currentSlide = document.querySelector(`.carousel__slide.active`);
     if (currentSlide === firstSlide) {
-        arrowLeft.classList.add(`hidden`); // Скрыть стрелку "Prev"
+        arrowLeft.classList.add(`hidden`);
     } else {
-        arrowLeft.classList.remove(`hidden`); // Показать стрелку "Prev"
+        arrowLeft.classList.remove(`hidden`);
     }
 
     if (currentSlide === lastSlide) {
-        arrowRight.classList.add(`hidden`); // Скрыть стрелку "Next"
+        arrowRight.classList.add(`hidden`);
     } else {
-        arrowRight.classList.remove(`hidden`); // Показать стрелку "Next"
+        arrowRight.classList.remove(`hidden`);
     }
 }
 
