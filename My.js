@@ -3,8 +3,7 @@ const carousel = document.querySelector('.carousel');
 const slides = carousel.querySelector('.carousel__slide');
 const prevButton = document.getElementById('prevButton');
 const nextButton = document.getElementById('nextButton');
-const slidesChild = slides.children;
-const innerSlide = document.querySelectorAll(`.carousel__slide`)
+
 const arrowLeft = document.getElementById(`prevButton`)
 const arrowRight = document.getElementById(`nextButton`)
 
