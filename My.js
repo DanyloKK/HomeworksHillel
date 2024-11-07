@@ -1,37 +1,83 @@
 "use strict";
-const findForm = document.getElementById(`contactForm`);
-const findInputName = findForm.elements.name;
-const findTextMessage = findForm.elements.message;
-const findPhoneInput = findForm.elements.phone;
-const findEmailInput = findForm.elements.email;
+const carousel = document.querySelector('.carousel');
+const slides = carousel.querySelector('.carousel__slide');
+const prevButton = document.getElementById('prevButton');
+const nextButton = document.getElementById('nextButton');
+const slidesChild = slides.children;
+const innerSlide = document.querySelectorAll(`.carousel__slide`)
+const arrowLeft = document.getElementById(`prevButton`)
+const arrowRight = document.getElementById(`nextButton`)
 
-const regExp = /^\w{5,}$/;
-const phoneRegExp = /^\+380\d{9}$/;
-const emailRegExp = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-z]{2,}$/;
-
-findForm.addEventListener(`submit`, function (event) {
-    event.preventDefault();
-    const nameValue = findInputName.value
-    if (nameValue.trim() === "") {
-        alert(`Введите ваше имя!`);
-        return; // Прерываем выполнение функции, если имя не введено
+function hideArrow() {
+   const firstSlide = document.querySelector(`.carousel__slide:first-of-type`);
+   const lastSlide = document.querySelector(`.carousel__slide:last-of-type`);
+   const currentSlide = document.querySelector(`.carousel__slide.active`);
+    if (currentSlide === firstSlide) {
+        arrowLeft.classList.add(`hidden`); // Скрыть стрелку "Prev"
     } else {
-        console.log(`Ваше имя: ${findInputName.value}`);
+        arrowLeft.classList.remove(`hidden`); // Показать стрелку "Prev"
     }
 
-    const messageRegular = findTextMessage.value;
-    const phoneRegular = findPhoneInput.value;
-    const emailRegular = findEmailInput.value;
-
-    if (regExp.test(messageRegular)) {
-        console.log(`Your message:${messageRegular}`)
+    if (currentSlide === lastSlide) {
+        arrowRight.classList.add(`hidden`); // Скрыть стрелку "Next"
     } else {
-        alert(`Message is less that 5 symbols`);
-        return;
+        arrowRight.classList.remove(`hidden`); // Показать стрелку "Next"
     }
-    if (phoneRegExp.test(phoneRegular)) {
-        console.log(`Your phone:${phoneRegular}`)
-    } else {
+}
+
+function goToNextSlide() {
+    let currentElement = document.querySelector(`.carousel__slide.active`);
+    let nextElement = currentElement.nextElementSibling;
+    let dot = document.querySelector(`.dot.active`);
+    let nextDot = dot.nextElementSibling;
+    if (nextElement) {
+        dot.classList.remove(`active`);
+        nextDot.classList.add(`active`)
+        currentElement.classList.remove(`active`);
+        nextElement.classList.add(`active`)
+    }
+    hideArrow()
+}
+
+function goToPrevElement() {
+    let currentElement = document.querySelector(`.carousel__slide.active`);
+    let prevElement = currentElement.previousElementSibling;
+    let dot = document.querySelector(`.dot.active`);
+    let prevDot = dot.previousElementSibling;
+    if (prevElement) {
+        dot.classList.remove(`active`);
+        prevDot.classList.add(`active`)
+        currentElement.classList.remove(`active`);
+        prevElement.classList.add(`active`)
+    }
+    hideArrow()
+}
+
+nextButton.addEventListener(`click`, goToNextSlide);
+prevButton.addEventListener(`click`, goToPrevElement);
+/*
+carousel.addEventListener("click",function (event){
+    if(event.target === rightArrow){
+        nextSlide.classList.add(`active`)
+        nextSlide.classList.remove(`hidden`)
+        activeSlide.classList.add(`hidden`)
+        activeSlide.classList.remove(`active`)
+        leftArrow.classList.remove(`arrow-hidden`)
+    }
+})
+
+ */
+
+/*
+Array.from(findChildren).forEach(function (item,index){
+    if(item.classList.contains(`carousel__slide`)){
+        console.log(item)
+    }
+})
+
+ */
+
+/*
         alert(`Phone is invalid, he must start with +380XXXXXXX`);
         return;
     }
@@ -40,7 +86,7 @@ findForm.addEventListener(`submit`, function (event) {
     } else {
         alert(`Email is invalid`);
     }
-
+  findForm.reset();
 });
 
 

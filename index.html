@@ -9,6 +9,75 @@
     <link rel="stylesheet" href="My.css">
 </head>
 <body>
+<div class="carousel">
+    <button id="prevButton" class="carousel__arrow carousel__arrow--left"></button>
+
+    <div class="carousel__slides">
+        <div class="carousel__slide active">
+            <img src="images/First.jpg" alt="Image 1">
+        </div>
+        <div class="carousel__slide">
+            <img src="images/Second.jpg" alt="Image 2">
+        </div>
+        <div class="carousel__slide">
+            <img src="images/Third.jpg" alt="Image 3">
+        </div>
+        <!-- Додавайте більше слайдів за потребою -->
+    </div>
+
+    <button id="nextButton" class="carousel__arrow carousel__arrow--right"></button>
+
+    <div class="carousel__dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <!-- Додавайте більше точок відповідно до кількості слайдів -->
+    </div>
+</div>
+<!--
+<div class="carousel">
+    <img class="arrow-left"  src="images/free-icon-arrowhead-thin-outline-to-the-left-32542.png">
+    <img class="arrow-right"  src="images/free-icon-right-arrow-angle-54833.png">
+    <div class="carousel-block">
+        <div class="carousel__slide active ">
+            <div>
+                <img class="first" src="images/First.jpg">
+            </div>
+            <div>
+                <h3>Команда></h3>
+                <h2>Ми звиклки брати на себе відповідальність<br>та завжди гарантуємо чесну,вчасну<br>допомогу,навіть у
+                    ситуаціях,коли<br>більшість безсилі.</h2>
+                <p>Олександр</p>
+                <span>Партнер</span>
+            </div>
+        </div>
+        <div class="carousel__slide ">
+            <div>
+                <img  class="second"  src="images/Second.jpg" style="max-width: 360px">
+            </div>
+            <div>
+                <h3>Команда></h3>
+                <h2>Ми звиклки брати на себе відповідальність<br>та завжди гарантуємо чесну,вчасну<br>допомогу,навіть у
+                    ситуаціях,коли<br>більшість безсилі.</h2>
+                <p>Олександр</p>
+                <span>Партнер</span>
+            </div>
+        </div>
+        <div class="carousel__slide ">
+            <div>
+                <img class="third" src="images/Third.jpg" style="max-width: 360px">
+            </div>
+            <div>
+                <h3>Команда></h3>
+                <h2>Ми звиклки брати на себе відповідальність<br>та завжди гарантуємо чесну,вчасну<br>допомогу,навіть у
+                    ситуаціях,коли<br>більшість безсилі.</h2>
+                <p>Олександр</p>
+                <span>Партнер</span>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="form-container">
     <h1>We would like to help you</h1>
     <form id="contactForm">
@@ -20,7 +89,6 @@
         <button type="submit">Send message</button>
     </form>
 </div>
-<!--
 <button class="address">Push me</button>
 <button class="addressTo">Come to site...</button>
 <div class="Container">
